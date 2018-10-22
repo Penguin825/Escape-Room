@@ -104,7 +104,7 @@ room_dining = {
 table as well as a vase of flowers. There is an exit to the north which leads
 to the kitchen.""",
 
-    "exits": {"north", "Kitchen"},
+    "exits": {"north": "Kitchen"},
 
     "items": [item_laptop, item_flowers]
 
@@ -118,7 +118,7 @@ room_living = {
 a coffee table. The coffe table has an ID card and a cup of tea. There is only
 one exit which is to the west and returns you to the hallway.""",
 
-    "exits": {"west", "Hallway"},
+    "exits": {"west": "Hallway"},
 
     "items": [item_id, item_tea]
 
@@ -138,7 +138,7 @@ opened without key.""",
     "items": [item_frontdoor]
 
 }
- 
+
 rooms = {
     "Cupboard": room_cupboard,
     "Bedroom": room_bedroom,

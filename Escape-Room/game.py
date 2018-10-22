@@ -294,6 +294,9 @@ def execute_use(item_id1, item_id2):
     raise NotImplementedError
 
 
+def execute_open(item_id):
+    
+
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -334,6 +337,12 @@ def execute_command(command):
             execute_use(command[1], command[2])
         else:
             print("Use what on what?")
+
+    elif command[0] == "open":
+        if len(command) > 1:
+            execute_open(command[1])
+        else:
+            print("Open what?")
 
     else:
         print("This makes no sense.")
