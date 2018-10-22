@@ -32,6 +32,16 @@ item_painting = {
     "can_take": False
 }
 
+item_frontdoor = {
+    "id": "frontdoor",
+
+    "name": "the front door",
+
+    "description": "A big ole wooden door",
+
+    "can_take": False
+}
+
 item_notepad = {
     "id": "notepad",
 
@@ -51,7 +61,9 @@ item_key = {
     "description":
     "The key that will allow you to escape the house.",
 
-    "can_take": True
+    "can_take": True,
+
+    "use_on": "frontdoor"
 }
 
 item_crowbar = {
@@ -130,12 +142,14 @@ item_money = {
     "can_take": True
 }
 
-item_frontdoor = {
-    "id": "frontdoor",
+item_gate = {
+    "id": "gate",
 
-    "name": "the front door",
+    "name": "a child gate",
 
-    "description": "A big ole wooden door",
+    "description": "It looks like you need a password to unlock this",
 
-    "can_take": False
+    "can_take": False,
+
+    "password": "abra"
 }
