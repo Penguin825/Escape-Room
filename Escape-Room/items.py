@@ -4,7 +4,9 @@ item_hanger = {
     "name": "a hanger",
 
     "description":
-    "A metal, wired coat hanger."
+    "A metal, wired coat hanger.",
+
+    "can_take": True
 }
 
 item_laptop = {
@@ -14,7 +16,9 @@ item_laptop = {
 
     "description":
     """A hp Pavilion displaying an email with the message
-'THE KEY IS IN THE ROOM THAT IS FILLED WITH BOOKS'""""
+'THE KEY IS IN THE ROOM THAT IS FILLED WITH BOOKS'""",
+
+    "can_take": False
 }
 
 item_painting = {
@@ -23,7 +27,9 @@ item_painting = {
     "name": "a painting",
 
     "description":
-    "A painting of a Jack Russell signed by abra."
+    "A painting of a Jack Russell signed by abra.",
+
+    "can_take": False
 }
 
 item_notepad = {
@@ -32,7 +38,9 @@ item_notepad = {
     "name": "a notepad",
 
     "description":
-    "A refill pukka pad."
+    "A refill pukka pad.",
+
+    "can_take": True
 }
 
 item_key = {
@@ -41,7 +49,9 @@ item_key = {
     "name": " a key",
 
     "description":
-    "The key that will allow you to escape the house."
+    "The key that will allow you to escape the house.",
+
+    "can_take": True
 }
 
 item_crowbar = {
@@ -50,16 +60,20 @@ item_crowbar = {
     "name": "a crowbar",
 
     "description":
-    "A strong, metal crowbar."
+    "A strong, metal crowbar.",
+
+    "can_take": True
 }
 
-item_item_plates = {
+item_plates = {
     "id": "plates",
     
     "name": "plates",
 
     "description":
-    "Dirty plates that need a serious clean."
+    "Dirty plates that need a serious clean.",
+
+    "can_take": True
 }
 
 item_sign = {
@@ -69,7 +83,9 @@ item_sign = {
 
     "description":
     """This sign reads 'KEEP THIS BATHROOM CLEAN', which is
-ironically considering how dirty the bathroom actually is."""
+ironically considering how dirty the bathroom actually is.""",
+
+    "can_take": False
 }
 
 item_flowers = {
@@ -78,7 +94,9 @@ item_flowers = {
     "name": "flowers",
 
     "description":
-    "A vase of tulips in the centre of the dining room table."
+    "A vase of tulips in the centre of the dining room table.",
+
+    "can_take": True
 }
 
 item_id = {
@@ -87,7 +105,9 @@ item_id = {
     "name": "student id card",
 
     "description":
-    "A student ID card which expirys in July 2021."
+    "A student ID card which expirys in July 2021.",
+
+    "can_take": True
 }
 
 item_tea = {
@@ -95,5 +115,27 @@ item_tea = {
     
     "name": "a cup of tea",
 
-    "description": "A cold cup of tea."
+    "description": "A cold cup of tea.",
+
+    "can_take": True
+}
+
+item_money = {
+    "id": "money",
+    
+    "name": "some money",
+
+    "description": "It looks like enough to order a medium pizza.",
+
+    "can_take": True
+}
+
+item_frontdoor = {
+    "id": "frontdoor",
+
+    "name": "the front door",
+
+    "description": "A big ole wooden door",
+
+    "can_take": False
 }

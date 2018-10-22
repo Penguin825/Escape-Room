@@ -9,7 +9,7 @@ challenge is to overcome the obstacles and get out of the house.
 The cupboard has an exit to the east and a pile of wired coat hangers
 to the west.""",
 
-    "exits": {"east": "bedroom"},
+    "exits": {"east": "Bedroom"},
 
     "items": [item_hanger]
 }
@@ -36,7 +36,7 @@ room_bathroom = {
 THIS BATHROOM CLEAN! Go west to re-enter the bedroom. The exit to the south
 is an exit into the corridor.""",
 
-    "exits": {"west": "Bedroom", "south", "Upstairs corridor"},
+    "exits": {"west": "Bedroom", "south": "Upstairs corridor"},
 
     "items": [item_sign]
 }
@@ -75,12 +75,12 @@ room_stairs = {
 
     "description":
     """You are on the stairs. Go north to the upstairs corridor or south to the
-downstairs hallway."""
+downstairs hallway.""",
 
     "exits": {"north": "Upstairs corridor", "south": "Hallway"},
 
     "items": []
-    
+}
 
 room_kitchen = {
     "name": "Kitchen",
@@ -133,24 +133,12 @@ leads to the lvining room. The exit to the east leads to the kitchen and to the
 south there is the front door. However, the front door is locked and cannot be 
 opened without key.""",
 
-    "exits": {"west", "Living Room", "east", "Kitchen", "north", "Front door"},
+    "exits": {"west": "Living Room", "east": "Kitchen"},
 
-    "items": []
+    "items": [item_frontdoor]
 
 }
-
-
-room_door = {
-    "name": "Front door",
-
-    "description":
-    """CONGRATULATIONS! You are now at the front door!"""
-
-    "exits": {},
-
-    "items": []
-
-    
+ 
 rooms = {
     "Cupboard": room_cupboard,
     "Bedroom": room_bedroom,
@@ -161,6 +149,5 @@ rooms = {
     "Kitchen": room_kitchen,
     "Living room": room_living,
     "Dining room": room_dining,
-    "Hallway": room_hallway
-    "Front door": room_door
+    "Hallway": room_hallway,
 }
