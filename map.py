@@ -4,10 +4,10 @@ room_cupboard = {
     "name": "Cupboard",
 
     "description":
-    """You are currently stuck in a cupboard on the second floor of a strange house.
-Your challenge is to overcome the obstacles and get out of the house.
-The cupboard has an exit to the east and some wired coat hangers
-in the corner of the room.""",
+    """You are currently stuck in a cupboard on the second floor of
+a strange house. Your challenge is to overcome the obstacles and get
+out of the house. The cupboard has an exit to the east and some wired
+coat hangers in the corner of the room.""",
 
     "exits": {"east": "Bedroom"},
 
@@ -19,9 +19,10 @@ room_bedroom = {
 
     "description":
     """You are standing in the middle of a bedroom. There is an exit to
-the west which leads you back into the cupboard. To the south is another door which cannot be opened.
-The exit to the east leads to what looks like an on-suit bathroom, this door is also locked. With the
-right tools this door can be picked.""",
+the west which leads you back into the cupboard. To the south is another
+door which cannot be opened. The exit to the east leads to what looks like
+an on-suit bathroom, this door is also locked. With the right tools this door can
+be picked.""",
 
     "exits":  {"west": "Cupboard" , "east": "Bathroom"},
 
@@ -32,8 +33,8 @@ room_bathroom = {
     "name": "Bathroom",
 
     "description":
-    """You are now in a dirty bathroom. There is a sign on the tiled wall that says KEEP
-THIS BATHROOM CLEAN OR ESLE! West leads back to the bedroom. The exit to the south
+    """You are now in a dirty bathroom. There is a sign on the tiled wall that says
+KEEP THIS BATHROOM CLEAN OR ESLE! West leads back to the bedroom. The exit to the south
 is an exit into a corridor.""",
 
     "exits": {"west": "Bedroom", "south": "Upstairs corridor"},
@@ -63,9 +64,10 @@ room_study = {
     "name": "Study",
 
     "description":
-    """You have now gained access to the study. The walls are lined with book shelves, you see alot
-of books named 'Java Puns', you are definitely better off not reading them. There
-is a large desk in the centre of the room. The exit to the west leads back to the upstairs corridoor.""",
+    """You have now gained access to the study. The walls are lined with book shelves,
+you see alot of books named 'Java Puns', you are definitely better off not reading them. There
+is a large desk in the centre of the room. The exit to the west leads back to the
+upstairs corridoor.""",
 
     "exits": {"west": "Upstairs corridor"},
 
@@ -76,8 +78,8 @@ room_stairs = {
     "name": "Stairs",
 
     "description":
-    """You are on the fluffy carpeted stairs. You can go north back to the upstairs corridor
-or south to the eerie downstairs hallway.""",
+    """You are on the fluffy carpeted stairs. You can go north back to the
+upstairs corridor or south to the eerie downstairs hallway.""",
 
     "exits": {"north": "Upstairs corridor", "south": "Hallway"},
 
@@ -88,9 +90,10 @@ room_kitchen = {
     "name": "Kitchen",
 
     "description":
-    """You are now in a kitchen. You are especially annoyed by the dirty plates left
-on the breakfast bar, also why is there a crowbar here? You can go east to return to the hallway.
-The exit to the south leads to a dining room and is currently jammed, maybe it can be forced open.""",
+    """You are now in a kitchen. You are especially annoyed by the dirty
+plates left on the breakfast bar, also why is there a crowbar here? You can
+go east to return to the hallway. The exit to the south leads to a dining room
+and is currently jammed, maybe it can be forced open.""",
 
     "exits": {"south": "Dining Room", "east": "Hallway"},
 
@@ -102,10 +105,10 @@ room_dining = {
     "name": "Dining Room",
 
     "description":
-    """You are now in a dining room. There is a alienware laptop on the dining room
-table. Alienware? You think to yourself who in their right mind would purchase that overpriced #£$%.
-There is also a pretty vase of flowers, whoever picked those has good taste.
-The exit to the north leads back to the kitchen.""",
+    """You are now in a dining room. There is a alienware laptop on
+the dining room table. Alienware? You think to yourself who in their
+right mind would purchase that overpriced #£$%. There is also a pretty vase of flowers,
+whoever picked those has good taste. The exit to the north leads back to the kitchen.""",
 
     "exits": {"north": "Kitchen"},
 
@@ -118,8 +121,8 @@ room_living = {
 
     "description":
     """You are currently in a living room. There is one large corner sofa, a TV and
-a coffee table. The coffe table has an ID card and a cold cup of tea left on it. There is only
-one exit which is to the west and returns you to the hallway.""",
+a coffee table. The coffe table has an ID card and a cold cup of tea left on it.
+There is only one exit which is to the west and returns you to the hallway.""",
 
     "exits": {"west": "Hallway"},
 
