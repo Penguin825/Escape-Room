@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import time
+
 from map import rooms
 from player import *
 from items import *
@@ -147,7 +149,7 @@ def exit_leads_to(exits, direction):
     >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
     'Reception'
     """
-    return rooms[exits[direction]]["name"]
+    return rooms[exits[direction][0]]["name"]
 
 
 def print_exit(direction, leads_to):
@@ -236,18 +238,74 @@ def is_valid_exit(exits, chosen_exit):
     return chosen_exit in exits
 
 
+def menu_gate(key, direction):
+    global current_room
+    while True:
+        user_input = input("Enter the password for the gate to unlock it, or type BACK to go back.\n> ")
+        user_input = normalise_input(user_input)[0]
+        print(key)
+        if user_input == "back":
+            return
+        elif user_input == key:
+            # Leave this exit unlocked
+            current_room["exits"][direction][1] = False
+            current_room = rooms[current_room["exits"][direction][0]]
+            return
+
+
+def menu_item(key, direction):
+    global current_room
+    while True:
+        user_input = input("The exit is shut!\nChoose an item to use on it or type BACK to go back.\n> ")
+        user_input = normalise_input(user_input)[0]
+        print(user_input)
+        if user_input == "back":
+            return
+        else:
+            for item in inventory:
+                if item["id"] == user_input:
+                    print(str("You used " + item["name"]))
+                    if user_input == key["id"]:
+                        print("The door opened.")
+                        current_room["exits"][direction][1] = False
+                        current_room = rooms[current_room["exits"][direction][0]]
+                        return
+                    else:
+                        print("That didn't work.")
+
+
+def prompt_unlock(key, direction):
+    global current_room
+    if isinstance(key, str):
+        menu_gate(key, direction)
+    elif isinstance(key, bool):
+        if key:
+            current_room["exits"][direction][1] = False
+            current_room = rooms[current_room["exits"][direction][0]]
+        else:
+            print("The door is so dirty it won't open.")
+    else:
+        menu_item(key, direction)
+
+
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
     to reflect the movement of the player if the direction is a valid exit
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-
     global current_room
     try:
-        current_room = rooms[current_room["exits"][direction]]
+        check = current_room["exits"][direction][1]
     except KeyError:
-        print("You cannot go there.")
+        print("You cannot go that way!")
+        return
+    if current_room["exits"][direction][1]:
+        # Exit is locked
+        prompt_unlock(current_room["exits"][direction][2], direction)
+    else:
+        # Exit is unlocked
+        current_room = rooms[current_room["exits"][direction][0]]
         
 
 def execute_take(item_id):
@@ -290,12 +348,29 @@ def execute_inspect(item_id):
             return
 
             
-def execute_use(item_id1, item_id2):
-    raise NotImplementedError
+def execute_clean(item):
+    if item_soap in inventory:
+        if item == "bathroom":
+            if current_room["name"] == "Bathroom":
+                print("The bathroom is now spotless!")
+                rooms["Bathroom"]["description"] = """You are now in a shiny clean bathroom. There is a sign on the wall above the sink.
+Go west to re-enter the bedroom. The exit to the south is an exit into the corridor."""
+                current_room["exits"]["south"][2] = True
+            else:
+                print("You're not in that room!")
+        elif item == "plates":
+            if item_plates in inventory or item_plates in current_room["items"]:
+                item_plates["description"] = "Some shiny plates"
+                rooms["Kitchen"]["description"] = """You are now in a kitchen. You can
+go east to return to the hallway. The exit to the south leads to a dining room
+and is currently jammed."""
+                print("The plates are now hygienic.")
+                
+        else:
+            print("You cannot clean that.")
+    else:
+        print("You have nothing to clean with!")
 
-
-def execute_open(item_id):
-    
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -332,17 +407,11 @@ def execute_command(command):
         else:
             print("Inspect what?")
 
-    elif command[0] == "use":
-        if len(command) > 2:
-            execute_use(command[1], command[2])
-        else:
-            print("Use what on what?")
-
-    elif command[0] == "open":
+    elif command[0] == "clean":
         if len(command) > 1:
-            execute_open(command[1])
+            execute_clean(command[1])
         else:
-            print("Open what?")
+            print("Clean what?")
 
     else:
         print("This makes no sense.")
@@ -358,6 +427,8 @@ def menu(exits, room_items, inv_items):
     """
 
     # Display menu
+    if current_room["name"] == "Exit":
+        return "complete"
     print_menu(exits, room_items, inv_items)
 
     # Read player's input
@@ -386,8 +457,16 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 
+def finish(score):
+    print(str("You scored " + str(score)))
+    while True:
+        input()
+
 # This is the entry point of our program
 def main():
+    start_menu()
+    
+    start = time.time()
 
     # Main game loop
     while True:
@@ -397,9 +476,13 @@ def main():
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
-
-        # Execute the player's command
-        execute_command(command)
+        if command != "complete":
+            # Execute the player's command
+            execute_command(command)
+        else:
+            end = time.time()
+            player_score = round(end - start)
+            finish(player_score)
 
 
 

@@ -32,14 +32,26 @@ item_painting = {
     "can_take": False
 }
 
-item_frontdoor = {
-    "id": "frontdoor",
+item_poster = {
+    "id": "poster",
 
-    "name": "the front door",
+    "name": "a poster",
 
-    "description": "A big ole wooden door",
+    "description":
+    "It looks like someone's a Big Bang Theory fan.",
 
     "can_take": False
+}
+
+item_photo = {
+    "id": "photo",
+
+    "name": "a photo",
+
+    "description":
+    "A picture of a couple stood by a lake.",
+
+    "can_take": True
 }
 
 item_notepad = {
@@ -95,9 +107,21 @@ item_sign = {
 
     "description":
     """This sign reads 'KEEP THIS BATHROOM CLEAN', which is
-ironically considering how dirty the bathroom actually is.""",
+ironically considering how dirty the bathroom actually is.
+Maybe you've got enough time to clean it...""",
 
     "can_take": False
+}
+
+item_soap = {
+    "id": "soap",
+
+    "name": "some soap",
+
+    "description":
+    """It looks like someone hasn't been using this...""",
+
+    "can_take": True
 }
 
 item_flowers = {
@@ -142,6 +166,16 @@ item_money = {
     "can_take": True
 }
 
+item_books = {
+    "id": "books",
+
+    "name": "some books",
+
+    "description": "The puns in here are so bad it makes you cry.",
+
+    "can_take": True
+}
+
 item_gate = {
     "id": "gate",
 
@@ -150,6 +184,18 @@ item_gate = {
     "description": "It looks like you need a password to unlock this",
 
     "can_take": False,
+}
 
-    "password": "abra"
+item_freedom = {
+    "id": "freedom",
+
+    "name": "a bus to the nearest police station",
+
+    "description": "it looks pretty legit",
+
+    "can_take": True
+}
+
+item_null = {
+    "id": ""
 }
