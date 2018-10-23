@@ -52,6 +52,7 @@ is a flight of stairs going down. However, there is a dalmatian patterned stair 
 with a four lettered lock code. You also wish that there is a cute dalmation dog somewhere
 to comfort you. The code to the stair gate could be somewhere in the
 corridor. The exit to the north leads back to the bedroom; to the
+<<<<<<< HEAD
 east there is a door to a study but it is only accessible using a smart card. There is a
 photo on the wall next to a poster. There is also a really cute dog painting on the wall,
 the longer you stare at the painting the more happy you become.""",
@@ -67,9 +68,9 @@ room_study = {
 
     "description":
     """You have now gained access to the study. The walls are lined with book shelves,
-you see alot of books named 'Java Puns', you are definitely better off not
-reading them. There is a large desk in the centre of the room. The exit to the west
-leads back to the upstairs corridoor.""",
+you see alot of books named 'Java Puns', you are definitely better off not reading them. There
+is a large desk in the centre of the room. The exit to the west leads back to the
+upstairs corridor.""",
 
     "exits": {"west": ["Upstairs corridor", False]},
 
@@ -95,6 +96,7 @@ room_kitchen = {
     """You are now in a kitchen. You are especially annoyed by the dirty
 plates left on the breakfast bar, also why is there a crowbar here? You can
 go east to return to the hallway. The exit to the south leads to a dining room
+<<<<<<< HEAD
 and is currently jammed.""",
 
     "exits": {"south": ["Dining room", True, item_crowbar], "east": ["Hallway", False]},
