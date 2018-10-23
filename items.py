@@ -6,7 +6,9 @@ item_hanger = {
     "description":
     "A metal, wired coat hanger.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.02
 }
 
 item_laptop = {
@@ -19,6 +21,7 @@ item_laptop = {
 'THE KEY IS IN THE ROOM THAT IS FILLED WITH BOOKS'""",
 
     "can_take": False
+
 }
 
 item_painting = {
@@ -50,7 +53,9 @@ item_notepad = {
     "description":
     "A refill pukka pad.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.2
 }
 
 item_key = {
@@ -63,7 +68,9 @@ item_key = {
 
     "can_take": True,
 
-    "use_on": "frontdoor"
+    "use_on": "frontdoor",
+
+    "mass": 0.03
 }
 
 item_crowbar = {
@@ -74,7 +81,9 @@ item_crowbar = {
     "description":
     "A strong, metal crowbar.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 2.0
 }
 
 item_plates = {
@@ -85,7 +94,9 @@ item_plates = {
     "description":
     "Dirty plates that need a serious clean.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 1.3
 }
 
 item_sign = {
@@ -108,7 +119,9 @@ item_flowers = {
     "description":
     "A vase of tulips in the centre of the dining room table.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 1.0
 }
 
 item_id = {
@@ -119,7 +132,9 @@ item_id = {
     "description":
     "A student ID card which expirys in July 2021.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.01
 }
 
 item_tea = {
@@ -129,7 +144,9 @@ item_tea = {
 
     "description": "A cold cup of tea.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.1
 }
 
 item_money = {
@@ -139,7 +156,9 @@ item_money = {
 
     "description": "It looks like enough to order a medium pizza.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.05
 }
 
 item_gate = {
@@ -147,9 +166,119 @@ item_gate = {
 
     "name": "a child gate",
 
-    "description": "It looks like you need a password to unlock this",
+    "description": "It looks like you need a password to unlock this.",
 
     "can_take": False,
 
     "password": "abra"
+}
+
+item_lamp = {
+    "id": "lamp",
+
+    "name": "a lava lamp",
+
+    "description": "It's a hot pink lava lamp.",
+
+    "can_take": False,
+}
+
+item_guitar = {
+    "id": "guitar",
+
+    "name": "an acoustic guitar",
+
+    "description": "This guitar is missing the B string and is out of tune.",
+
+    "can_take": True,
+
+    "mass": 1.5
+}
+
+item_rug = {
+    "id": "rug",
+
+    "name": "an ornimental rug",
+
+    "description": "It's a llama skin rug.",
+
+    "can_take": False,
+}
+
+item_medicine = {
+    "id": "medicine",
+
+    "name": "a bottle of cough-syrup",
+
+    "description":
+    """It's a bottle of cough-syrup. There are a few drops left. There is congealed
+residue which prevents you from opening the bottle.""",
+
+    "can_take": True,
+
+    "mass": 0.05
+}
+
+item_mirror = {
+    "id": "mirror",
+
+    "name": "a mirror",
+
+    "description":
+    """It's a shiny reflective surface. You look at yourself...
+it's not a pretty sight.""",
+
+    "can_take": False,
+}
+
+item_soap = {
+    "id": "soap",
+
+    "name": "a bar of soap",
+
+    "description": "This soap gives off a lavender scent. It has barely been used.",
+
+    "can_take": True,
+
+    "mass": 0.15
+}
+
+item_toothbrush = {
+    "id": "toothbrush",
+
+    "name": "a toothbrush",
+
+    "description": "It's a brand new toothbrush.",
+
+    "can_take": True,
+
+    "mass": 0.04
+}
+
+item_mop = {
+    "id": "mop",
+
+    "name": "a mop",
+
+    "description":
+    """It's a complete set of cleaning equiptment. Items include: a mop, sponges,
+ various brushes and cleaning solutions for all surfaces""",
+
+    "can_take": True,
+
+    "mass": 1.7
+}
+
+item_folders = {
+    "id": "folders",
+
+    "name": "a black ring binder",
+
+    "description":
+    """It's a binder containing many pieces of paper. Most have incomprehensible
+scribbles on them.""",
+
+    "can_take": True,
+
+    "mass": 0.6
 }

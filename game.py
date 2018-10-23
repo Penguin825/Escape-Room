@@ -124,6 +124,7 @@ def print_room(room):
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
+    
     # Display room name
     print()
     print(room["name"].upper())
@@ -208,13 +209,16 @@ def print_menu(exits, room_items, inv_items):
         if room_item["can_take"]:
             print(str("TAKE " + room_item["id"].upper() + " to take " + room_item["name"]))
         print(str("INSPECT " + room_item["id"].upper() + " to inspect " + room_item["name"]))
+        print("\n")
 
     # Iterate through inventory
     for inv_item in inv_items:
         print(str("DROP " + inv_item["id"].upper() + " to drop your " + inv_item["name"] + "."))
         print(str("INSPECT " + inv_item["id"].upper() + " to inspect " + inv_item["name"]))
+        print("\n")
     
     print("What do you want to do?")
+    print("="*100)
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -234,6 +238,14 @@ def is_valid_exit(exits, chosen_exit):
     True
     """
     return chosen_exit in exits
+
+def is_valid_mass(inv_items):
+    weight = 0
+    
+    for masses in inventory:
+        weight = weight + masses["mass"]
+
+    return(weight)
 
 
 def execute_go(direction):
@@ -259,9 +271,14 @@ def execute_take(item_id):
 
     for item in current_room["items"]:
         if item["id"] == item_id and item["can_take"]:
-            current_room["items"].remove(item)
-            inventory.append(item)
-            return
+            if is_valid_mass(inventory) <= 2.0:
+                current_room["items"].remove(item)
+                inventory.append(item)
+                if is_valid_mass(inventory) >= 1.5:
+                    print("Current weight = " + str(is_valid_mass(inventory)) + "kg")
+                    print("MAX carry capacity = 2.0kg")
+                return
+            
     print("You cannot take that.")
     
 
@@ -283,10 +300,15 @@ def execute_inspect(item_id):
     for names in current_room["items"]:
         if names["id"] == item_id:
             print(names["description"])
+            if names["can_take"]:
+             print("item mass = " + str(names["mass"]) + "kg")
             return
+        
     for names in inventory:
         if names["id"] == item_id:
             print(names["description"])
+            if names["can_take"]:
+                print("item mass = " + str(names["mass"]) + "kg")
             return
 
             
@@ -294,7 +316,7 @@ def execute_use(item_id1, item_id2):
     raise NotImplementedError
 
 
-def execute_open(item_id):
+#def execute_open(item_id):
     
 
 def execute_command(command):
@@ -304,7 +326,6 @@ def execute_command(command):
     execute_take, or execute_drop, supplying the second word as the argument.
 
     """
-
     if 0 == len(command):
         return
 
@@ -356,7 +377,7 @@ def menu(exits, room_items, inv_items):
     function before being returned.
 
     """
-
+    
     # Display menu
     print_menu(exits, room_items, inv_items)
 
@@ -400,7 +421,7 @@ def main():
 
         # Execute the player's command
         execute_command(command)
-
+        
 
 
 # Are we being run as a script? If so, run main().

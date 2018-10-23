@@ -25,7 +25,7 @@ be picked using wire.""",
 
     "exits":  {"west": "Cupboard" , "east": "Bathroom"},
 
-    "items": []
+    "items": [item_lamp, item_guitar, item_rug]
 }
 
 room_bathroom = {
@@ -38,7 +38,7 @@ is an exit into the corridor.""",
 
     "exits": {"west": "Bedroom", "south": "Upstairs corridor"},
 
-    "items": [item_sign]
+    "items": [item_sign, item_medicine, item_mirror, item_soap, item_toothbrush, item_mop]
 }
 
 room_corridor = {
@@ -67,7 +67,7 @@ the upstairs corridor.""",
 
     "exits": {"west": "Upstairs corridor"},
 
-    "items": [item_notepad, item_key]
+    "items": [item_notepad, item_key, item_folders]
 }
 
 room_stairs = {
