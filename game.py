@@ -37,7 +37,6 @@ def display_menu():
 
     # Display ascii art
     for char in ascii:
-        sleep(0.005)
         sys.stdout.write(char)
         sys.stdout.flush()
 
@@ -312,13 +311,20 @@ def menu_gate(key, direction):
 def menu_item(key, direction):
     #interaction with locked doors which require a key. starts its own loop until the correct item is used.
     global current_room
+    user_input = input("The exit is shut!\nChoose an item to use on it or type BACK to go back.\n> ")
     while True:
-        user_input = input("The exit is shut!\nChoose an item to use on it or type BACK to go back.\n> ")
-        user_input = normalise_input(user_input)[0]
-        #print(user_input)
+        user_input = normalise_input(user_input)
+        if user_input[0] == "use" and len(user_input) > 1:
+            user_input = user_input[1]
+        elif len(user_input) > 0:
+            user_input = user_input[0]
+        else:
+            user_input = input("Choose an item to use on the door or type BACK to go back.\n> ")
+            continue
         if user_input == "back":
             return
         else:
+            item_in_inventory = False
             for item in inventory:
                 if item["id"] == user_input:
                     print(str("You used " + item["name"]))
@@ -328,7 +334,11 @@ def menu_item(key, direction):
                         current_room = rooms[current_room["exits"][direction][0]]
                         return
                     else:
-                        print("That didn't work.")
+                        user_input = input("That didn't work.\nChoose an item to use on the door or type BACK to go back.\n> ")
+                        item_in_inventory = True
+                        break
+            if not item_in_inventory:
+                user_input = input("You are not holding that item!\nChoose an item to user on the door or type BACK to go back.\n> ")
 
 
 def prompt_unlock(key, direction):
@@ -381,6 +391,9 @@ def execute_take(item_id):
                 if is_valid_mass(inventory) >= 1.5:
                     print("Current weight = " + str(is_valid_mass(inventory)) + "kg")
                     print("MAX carry capacity = 2.0kg")
+                return
+            else:
+                print("You are carrying too many items!")
                 return
             
     print("You cannot take that.")
@@ -561,12 +574,17 @@ def main():
                 if int(times[player_name]) > player_time:
                     times.update({player_name: str(player_time)})
             except KeyError:
-                times.update({player_name: player_time})
+                times.update({player_name: str(player_time)})
 
             print("Here's how you compared to everyone's high scores:")
             for name in times:
                 minutes, seconds = divmod(int(times[name]), 60)
-                print(str(name + " got " + str(minutes) + ":" + str(seconds)))
+                minutes = str(minutes)
+                if seconds < 10:
+                    seconds = str("0" + str(seconds))
+                else:
+                    seconds = str(seconds)
+                print(str(name + " got " + minutes + ":" + seconds))
             write_scores(times)
             return
 
