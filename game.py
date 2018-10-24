@@ -42,21 +42,18 @@ def start_menu():
     # Display ascii art
     for char in ascii:
         sleep(0.005)
-
         sys.stdout.write(char)
         sys.stdout.flush()
 
     # Display the game's about
     for char in about:
         sleep(0.023)
-
         sys.stdout.write(char)
         sys.stdout.flush()
 
     # Display the menu
     for char in menu:
         sleep(0.03)
-        
         sys.stdout.write(char)
         sys.stdout.flush()
 
@@ -565,8 +562,9 @@ def main():
 
     global game_id
     
-    start_menu()
     #starts a timer which is used for the player's score
+
+    start_menu()
     start = time.time()
 
     # Main game loop
