@@ -192,7 +192,7 @@ item_money = {
 item_books = {
     "id": "book",
 
-    "name": "a copy of Puns for the casual Java Developer: 23rd Edition by K. Siridov",
+    "name": "a copy of Puns for the casual Java Developer: 23rd Edition by K. Sidorov",
 
     "description": "The puns in here bring a tear to your eye.",
 
