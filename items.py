@@ -30,7 +30,7 @@ item_painting = {
     "name": "a painting",
 
     "description":
-    "A beautiful painting of Bob Ross holding a dalmation dog, signed by abra.",
+    "A beautiful painting of Bob Ross holding a dalmation dog, it seems to have the word 'abra' scratched into the corner.",
 
     "can_take": False
 }
