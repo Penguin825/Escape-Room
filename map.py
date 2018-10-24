@@ -9,6 +9,7 @@ a strange house. Your challenge is to overcome the obstacles and get
 out of the house. The cupboard has an exit to the east and some wired
 coat hangers in the corner of the room.""",
 
+    #exits now have a boolean value to determine the locked condition
     "exits": {"east": ["Bedroom", False]},
 
     "items": [item_hanger]

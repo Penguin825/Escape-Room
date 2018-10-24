@@ -54,7 +54,10 @@ item_photo = {
     "description":
     "A picture of a couple stood by a lake.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.01
+
 }
 
 item_notepad = {
@@ -132,7 +135,9 @@ item_soap = {
     "description":
     """It looks like someone hasn't been using this...""",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.12
 }
 
 item_flowers = {
@@ -192,7 +197,9 @@ item_books = {
 
     "description": "The puns in here are so bad it makes you cry.",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0.65
 }
 
 item_gate = {
@@ -212,7 +219,9 @@ item_freedom = {
 
     "description": "it looks pretty legit",
 
-    "can_take": True
+    "can_take": True,
+
+    "mass": 0
 }
 
 item_null = {
@@ -254,7 +263,7 @@ item_rug = {
 item_medicine = {
     "id": "medicine",
 
-    "name": "a bottle of cough-syrup",
+    "name": "a bottle of medicine",
 
     "description":
     """It's a bottle of cough-syrup. There are a few drops left. There is congealed
