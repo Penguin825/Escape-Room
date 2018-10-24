@@ -7,8 +7,52 @@ from player import *
 from items import *
 from gameparser import *
 from scoreboard import *
+import sys
+from time import sleep
+global game_id
 
 
+def display_menu():
+    
+    ascii = """
+
+███████╗███████╗ ██████╗ █████╗ ██████╗ ███████╗    ██████╗  ██████╗  ██████╗ ███╗   ███╗
+██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝    ██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
+█████╗  ███████╗██║     ███████║██████╔╝█████╗      ██████╔╝██║   ██║██║   ██║██╔████╔██║
+██╔══╝  ╚════██║██║     ██╔══██║██╔═══╝ ██╔══╝      ██╔══██╗██║   ██║██║   ██║██║╚██╔╝██║
+███████╗███████║╚██████╗██║  ██║██║     ███████╗    ██║  ██║╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
+╚══════╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚══════╝    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
+                                                                                         
+
+
+    """
+
+    about = """A puzzle game where you must solve the clues to escape your neighbour's house before they get home.
+                                \n\n
+    """
+
+    menu = """
+                                  ENTER YOUR NAME:
+    """
+
+    # Display ascii art
+    for char in ascii:
+        sleep(0.005)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+    # Display the game's about
+    for char in about:
+        sleep(0.023)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+    # Display the menu
+    for char in menu:
+        sleep(0.03)
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -127,7 +171,7 @@ def print_room(room):
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
-    
+  
     # Display room name
     print()
     print(room["name"].upper())
@@ -200,6 +244,8 @@ def print_menu(exits, room_items, inv_items):
     What do you want to do?
 
     """
+    #Now gives the player a template for any item in the current room or their inventory
+    #instead of looping the same command for each item - avoids clutter on screen.
     
     print("You can:")
     # Iterate over available exits
@@ -213,6 +259,7 @@ def print_menu(exits, room_items, inv_items):
     # Iterate through inventory
     print("DROP [item] to drop an item")
 
+    #gives the player additional information on items in their inventory or in the current room
     print("INSPECT [item] to find out more about an item")
     
     print("What do you want to do?")
@@ -247,6 +294,7 @@ def is_valid_mass(inv_items):
 
 
 def menu_gate(key, direction):
+    #interaction with the child gate. starts its own loop until the correct passwordis inputted
     global current_room
     while True:
         user_input = input("Enter the password for the gate to unlock it, or type BACK to go back.\n> ")
@@ -262,11 +310,12 @@ def menu_gate(key, direction):
 
 
 def menu_item(key, direction):
+    #interaction with locked doors which require a key. starts its own loop until the correct item is used.
     global current_room
     while True:
         user_input = input("The exit is shut!\nChoose an item to use on it or type BACK to go back.\n> ")
         user_input = normalise_input(user_input)[0]
-        print(user_input)
+        #print(user_input)
         if user_input == "back":
             return
         else:
@@ -283,6 +332,7 @@ def menu_item(key, direction):
 
 
 def prompt_unlock(key, direction):
+    #changes the boolean value of the exit
     global current_room
     if isinstance(key, str):
         menu_gate(key, direction)
@@ -325,7 +375,7 @@ def execute_take(item_id):
 
     for item in current_room["items"]:
         if item["id"] == item_id and item["can_take"]:
-            if is_valid_mass(inventory) <= 2.0:
+            if is_valid_mass(inventory) + item["mass"] <= 2.0:
                 current_room["items"].remove(item)
                 inventory.append(item)
                 if is_valid_mass(inventory) >= 1.5:
@@ -351,6 +401,7 @@ def execute_drop(item_id):
 
     
 def execute_inspect(item_id):
+    #gives the player additional information on items in their inventory or in the current room
     for names in current_room["items"]:
         if names["id"] == item_id:
             print(names["description"])
@@ -367,7 +418,8 @@ def execute_inspect(item_id):
 
             
 def execute_clean(item):
-    if item_soap in inventory:
+    #allows the player to use items to clean rooms or other items
+    if item_mop in inventory and item_soap in inventory:
         if item == "bathroom":
             if current_room["name"] == "Bathroom":
                 print("The bathroom is now spotless!")
@@ -387,7 +439,7 @@ and is currently jammed."""
         else:
             print("You cannot clean that.")
     else:
-        print("You have nothing to clean with!")
+        print("You need 2 cleaning products to do this!")
 
 
 
@@ -466,7 +518,7 @@ def move(exits, direction):
     >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
     True
     >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
-    True
+    Trues
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
     False
     """
@@ -476,10 +528,8 @@ def move(exits, direction):
 
 
 def start():
-    print("""Welcome to Escape Room, a text-based adventure game. Your challenge
-is to use the objects within each room to open doors into new rooms and eventually
-escape the house.""")
-    name = input("Enter your name:\n> ").lower()
+    display_menu()
+    name = input("> ").lower()
     return name
 
 
@@ -513,7 +563,7 @@ def main():
             except KeyError:
                 times.update({player_name: player_time})
 
-            print("Here's how you compared to everyone else:")
+            print("Here's how you compared to everyone's high scores:")
             for name in times:
                 minutes, seconds = divmod(int(times[name]), 60)
                 print(str(name + " got " + str(minutes) + ":" + str(seconds)))
