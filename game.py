@@ -6,6 +6,7 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from scoreboard import *
 
 
 
@@ -215,7 +216,7 @@ def print_menu(exits, room_items, inv_items):
     print("INSPECT [item] to find out more about an item")
     
     print("What do you want to do?")
-    print("="*100)
+    print("="*80)
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -474,16 +475,18 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 
-def finish(score):
-    print(str("You scored " + str(score)))
-    while True:
-        input()
+def start():
+    print("""Welcome to Escape Room, a text-based adventure game. Your challenge
+is to use the objects within each room to open doors into new rooms and eventually
+escape the house.""")
+    name = input("Enter your name:\n> ").lower()
+    return name
+
 
 # This is the entry point of our program
-def main():
-    #start_menu()
-    
-    start = time.time()
+def main():    
+    player_name = start()
+    timer_start = time.time()
 
     # Main game loop
     while True:
@@ -498,11 +501,24 @@ def main():
             # Execute the player's command
             execute_command(command)
         else:
-            end = time.time()
-            player_score = round(end - start)
-            finish(player_score)
+            timer_end = time.time()
+            player_time = round(timer_end - timer_start)
+            minutes, seconds = divmod(player_time, 60)
+            time_string = str(str(minutes) + ":" + str(seconds))
+            print("Congratulations! You got a time of", time_string)
+            times = get_scores()
+            try:
+                if int(times[player_name]) > player_time:
+                    times.update({player_name: str(player_time)})
+            except KeyError:
+                times.update({player_name: player_time})
 
-
+            print("Here's how you compared to everyone else:")
+            for name in times:
+                minutes, seconds = divmod(int(times[name]), 60)
+                print(str(name + " got " + str(minutes) + ":" + str(seconds)))
+            write_scores(times)
+            return
 
 
 # Are we being run as a script? If so, run main().

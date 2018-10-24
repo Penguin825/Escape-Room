@@ -198,21 +198,11 @@ item_books = {
 item_gate = {
     "id": "gate",
 
-    "name": "a child gate",
+    "name": "a dog gate",
 
     "description": "It looks like you need a password to unlock this.",
 
     "can_take": False,
-}
-
-item_freedom = {
-    "id": "freedom",
-
-    "name": "a bus to the nearest police station",
-
-    "description": "it looks pretty legit",
-
-    "can_take": True
 }
 
 item_null = {

@@ -152,13 +152,11 @@ room_exit = {
     "name": "Exit",
 
     "description":
-    """CONGRATULATIONS
-
-You escaped the house!""",
+    "",
 
     "exits": {},
 
-    "items": [item_freedom]
+    "items": []
 }
 
 rooms = {

@@ -3,5 +3,4 @@ from map import rooms
 
 inventory = []
 
-# Start game at the reception
 current_room = rooms["Cupboard"]
