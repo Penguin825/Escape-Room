@@ -17,7 +17,7 @@ item_laptop = {
     "name": "a laptop",
 
     "description":
-    """An Alienware laptop displaying an email with the message
+    """A hp Pavilion displaying an email with the message
 'THE KEY IS IN THE ROOM THAT IS FILLED WITH BOOKS'""",
 
     "can_take": False
@@ -30,7 +30,7 @@ item_painting = {
     "name": "a painting",
 
     "description":
-    "A beautiful painting of Bob Ross holding a dalmation dog, it seems to have the word 'abra' scratched into the corner.",
+    "A painting of a Jack Russell signed by abra.",
 
     "can_take": False
 }
@@ -63,7 +63,7 @@ item_notepad = {
     "name": "a notepad",
 
     "description":
-    "Hmmm thats a really bad drawing of a dog.",
+    "A refill pukka pad.",
 
     "can_take": True,
 
@@ -76,7 +76,7 @@ item_key = {
     "name": "a key",
 
     "description":
-    "This is the frontdoor key.",
+    "The key that will allow you to escape the house.",
 
     "can_take": True,
 
@@ -118,7 +118,7 @@ item_sign = {
 
     "description":
     """This sign reads 'KEEP THIS BATHROOM CLEAN', which is
-ironic considering how dirty the bathroom actually is.
+ironically considering how dirty the bathroom actually is.
 Maybe you've got enough time to clean it...""",
 
     "can_take": False

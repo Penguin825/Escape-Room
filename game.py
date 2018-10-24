@@ -6,6 +6,73 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from scoreboard import *
+import sys
+from time import sleep
+global game_id
+
+
+def start_menu():
+    
+    ascii = """
+
+        ███████╗███████╗ ██████╗ █████╗ ██████╗ ███████╗    ██████╗  ██████╗  ██████╗ ███╗   ███╗
+        ██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝    ██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
+        █████╗  ███████╗██║     ███████║██████╔╝█████╗      ██████╔╝██║   ██║██║   ██║██╔████╔██║
+        ██╔══╝  ╚════██║██║     ██╔══██║██╔═══╝ ██╔══╝      ██╔══██╗██║   ██║██║   ██║██║╚██╔╝██║
+        ███████╗███████║╚██████╗██║  ██║██║     ███████╗    ██║  ██║╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
+        ╚══════╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚══════╝    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
+                                                                                         
+
+
+    """
+
+    about = """A puzzle game where you must solve the clues to escape your neighbour's house before they get home.
+                                \n\n
+    """
+
+    menu = """
+                          PRESS ANY KEY IF YOU WISH TO CONTINUE
+                                  enter -99 to exit
+
+
+                                      SCOREBOARD:
+    """
+
+    for char in ascii:
+        #sleep(0.009)
+        # print(char, end="")
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+    for char in about:
+        #sleep(0.08)
+        # print(char, end="")
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+    for char in menu:
+        #sleep(0.1)
+        # print(char, end="")
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+    print("\t\t\t\t" , "NAME" , "\t\t" , "TIME(s)")
+
+    scoreboard()
+            
+    user_input = input("> ")
+    if user_input == str(-99):
+            quit()
+
+    global game_id
+    game_id =""
+    
+    while len(game_id) != 3:
+        print("Enter your name ( 3 characters only )")
+        game_id = input("")
+    
+    return game_id
 
 
 
@@ -126,7 +193,7 @@ def print_room(room):
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
-    
+  
     # Display room name
     print()
     print(room["name"].upper())
@@ -265,7 +332,7 @@ def menu_item(key, direction):
     while True:
         user_input = input("The exit is shut!\nChoose an item to use on it or type BACK to go back.\n> ")
         user_input = normalise_input(user_input)[0]
-        print(user_input)
+        #print(user_input)
         if user_input == "back":
             return
         else:
@@ -465,7 +532,7 @@ def move(exits, direction):
     >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
     True
     >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
-    True
+    Trues
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
     False
     """
@@ -475,14 +542,17 @@ def move(exits, direction):
 
 
 def finish(score):
-    print(str("You scored " + str(score)))
-    while True:
-        input()
+    print(str("You FINISHED in " + str(score) + "seconds"))
+    #while True:
+        #input()
 
 # This is the entry point of our program
 def main():
-    #start_menu()
+
+    global game_id
     
+    #start_menu()
+    start_menu()
     start = time.time()
 
     # Main game loop
@@ -501,7 +571,9 @@ def main():
             end = time.time()
             player_score = round(end - start)
             finish(player_score)
-
+            break
+    
+    get_scores(game_id, player_score)
 
 
 
