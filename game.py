@@ -39,18 +39,21 @@ def start_menu():
                                       SCOREBOARD:
     """
 
+    # Display ascii art
     for char in ascii:
         #sleep(0.009)
         # print(char, end="")
         sys.stdout.write(char)
         sys.stdout.flush()
 
+    # Display the game's about
     for char in about:
         #sleep(0.08)
         # print(char, end="")
         sys.stdout.write(char)
         sys.stdout.flush()
 
+    # Display the menu
     for char in menu:
         #sleep(0.1)
         # print(char, end="")
@@ -59,15 +62,18 @@ def start_menu():
 
     print("\t\t\t\t" , "NAME" , "\t\t" , "TIME(s)")
 
+    # Opens up scoreboard
     scoreboard()
-            
+
+    # Prompt input from user to start the game
     user_input = input("> ")
     if user_input == str(-99):
             quit()
 
     global game_id
     game_id =""
-    
+
+    # Making sure the name is limtited to 3 characters only
     while len(game_id) != 3:
         print("Enter your name ( 3 characters only )")
         game_id = input("")
@@ -568,11 +574,13 @@ def main():
             # Execute the player's command
             execute_command(command)
         else:
+            # Calculating the player's time
             end = time.time()
             player_score = round(end - start)
             finish(player_score)
             break
-    
+
+    # Display scoreboard at the end of the game
     get_scores(game_id, player_score)
 
 
